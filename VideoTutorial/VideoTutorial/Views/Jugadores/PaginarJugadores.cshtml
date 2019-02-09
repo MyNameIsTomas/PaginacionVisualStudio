@@ -1,0 +1,42 @@
+﻿@using VideoTutorial.Models
+@model List<InformacionJugadores>
+@{
+    ViewBag.Title = "PaginarJugadores";
+    int pagina = 1;
+    List<EQUIPO> ListaEquipos = ViewBag.ListEquipo;
+}
+<h2>PaginarJugadores</h2>
+<form method="post">
+    <select name="equipos" class="form-control" size="4">
+        @foreach (EQUIPO equi in ListaEquipos) {
+            <option value="@equi.NOM_EQUIPO">@equi.NOM_EQUIPO</option>
+        }
+    </select>
+    <button class="btn btn-success" type="submit">Ver jugadores</button>
+</form>
+<hr />
+<table class="table">
+    <tr>
+        <th>Nombre</th>
+        <th>Dorsal</th>
+        <th>Equipo</th>
+        <th>Ciudad</th>
+    </tr>
+    @foreach (InformacionJugadores jug in Model) {
+        <tr>
+            <td>@jug.JNOMBRE</td>
+            <td>@jug.IDEMJUGADOR</td>
+            <td>@jug.NOM_EQUIPO</td>
+            <td>@jug.CIUDAD</td>
+        </tr>
+    }
+</table>
+<nav aria-label="Page navigation example">
+    <ul class="pagination">
+        @for (int i = 0; i <= ViewBag.TotalRegistros; i += 3) {
+            <li class='page - item'>
+                @Html.ActionLink(pagina++.ToString(), "PaginarJugadores", "Jugadores", new { posicion = i, equipos = ViewBag.Equipos }, null)
+            </li>
+        }
+    </ul>
+</nav>

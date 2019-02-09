@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="HOSPITALModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="EQUIPO">
+    <Key>
+      <PropertyRef Name="NUM_EQUIPO" />
+    </Key>
+    <Property Name="NUM_EQUIPO" Type="int" Nullable="false" />
+    <Property Name="NOM_EQUIPO" Type="nvarchar" MaxLength="50" />
+    <Property Name="CIUDAD" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="JUGADORES">
+    <Key>
+      <PropertyRef Name="NUM_JUGADORE" />
+    </Key>
+    <Property Name="NUM_JUGADORE" Type="int" Nullable="false" />
+    <Property Name="NUM_EQUIPO" Type="int" />
+    <Property Name="JNOMBRE" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'HOSPITAL.dbo.InformacionJugadores' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="InformacionJugadores">
+    <Key>
+      <PropertyRef Name="IDEMJUGADOR" />
+    </Key>
+    <Property Name="IDEMJUGADOR" Type="int" Nullable="false" />
+    <Property Name="JNOMBRE" Type="nvarchar" MaxLength="50" />
+    <Property Name="NOM_EQUIPO" Type="nvarchar" MaxLength="50" />
+    <Property Name="CIUDAD" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityContainer Name="HOSPITALModelStoreContainer">
+    <EntitySet Name="EQUIPO" EntityType="Self.EQUIPO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="JUGADORES" EntityType="Self.JUGADORES" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="InformacionJugadores" EntityType="Self.InformacionJugadores" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [InformacionJugadores].[IDEMJUGADOR] AS [IDEMJUGADOR], 
+    [InformacionJugadores].[JNOMBRE] AS [JNOMBRE], 
+    [InformacionJugadores].[NOM_EQUIPO] AS [NOM_EQUIPO], 
+    [InformacionJugadores].[CIUDAD] AS [CIUDAD]
+    FROM [dbo].[InformacionJugadores] AS [InformacionJugadores]</DefiningQuery>
+    </EntitySet>
+  </EntityContainer>
+</Schema>

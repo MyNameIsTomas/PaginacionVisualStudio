@@ -1,0 +1,32 @@
+﻿@using VideoTutorial.Models
+@model List<InformacionJugadores>
+@{
+    ViewBag.Title = "PaginarLinq";
+    int pagina = 1;
+}
+<h2>PaginarLinq</h2>
+<table class="table">
+    <tr>
+        <th>Nombre</th>
+        <th>Dorsal</th>
+        <th>Equipo</th>
+        <th>Ciudad</th>
+    </tr>
+    @foreach (InformacionJugadores jug in Model) {
+        <tr>
+            <td>@jug.JNOMBRE</td>
+            <td>@jug.IDEMJUGADOR</td>
+            <td>@jug.NOM_EQUIPO</td>
+            <td>@jug.CIUDAD</td>
+        </tr>
+    }
+</table>
+<nav aria-label="Page navigation example">
+    <ul class="pagination">
+        @for (int i = 0; i <= ViewBag.TotalRegistros; i += 3) {
+            <li class='page - item'>
+                @Html.ActionLink(pagina++.ToString(), "PaginarLinq", "Jugadores", new { posicion = i }, null)
+            </li>
+        }
+    </ul>
+</nav>

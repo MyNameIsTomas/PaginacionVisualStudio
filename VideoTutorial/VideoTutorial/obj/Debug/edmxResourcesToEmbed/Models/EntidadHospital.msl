@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="HOSPITALModelStoreContainer" CdmEntityContainer="HOSPITALEntities">
+    <EntitySetMapping Name="EQUIPO">
+      <EntityTypeMapping TypeName="HOSPITALModel.EQUIPO">
+        <MappingFragment StoreEntitySet="EQUIPO">
+          <ScalarProperty Name="NUM_EQUIPO" ColumnName="NUM_EQUIPO" />
+          <ScalarProperty Name="NOM_EQUIPO" ColumnName="NOM_EQUIPO" />
+          <ScalarProperty Name="CIUDAD" ColumnName="CIUDAD" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="JUGADORES">
+      <EntityTypeMapping TypeName="HOSPITALModel.JUGADORES">
+        <MappingFragment StoreEntitySet="JUGADORES">
+          <ScalarProperty Name="NUM_JUGADORE" ColumnName="NUM_JUGADORE" />
+          <ScalarProperty Name="NUM_EQUIPO" ColumnName="NUM_EQUIPO" />
+          <ScalarProperty Name="JNOMBRE" ColumnName="JNOMBRE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="InformacionJugadores">
+      <EntityTypeMapping TypeName="HOSPITALModel.InformacionJugadores">
+        <MappingFragment StoreEntitySet="InformacionJugadores">
+          <ScalarProperty Name="IDEMJUGADOR" ColumnName="IDEMJUGADOR" />
+          <ScalarProperty Name="JNOMBRE" ColumnName="JNOMBRE" />
+          <ScalarProperty Name="NOM_EQUIPO" ColumnName="NOM_EQUIPO" />
+          <ScalarProperty Name="CIUDAD" ColumnName="CIUDAD" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
